@@ -9,9 +9,8 @@ import repository.StudentRepository;
 import java.util.List;
 
 @RestController
-public class StudentControler {
+public class StudentController {
 
-    //localhost:8080/students
     @Autowired
     StudentRepository repo;
     @GetMapping("/students")
@@ -19,7 +18,7 @@ public class StudentControler {
         List<Student> students = repo.findAll();
         return students;
     }
-    //localhost:8080/students/1
+
     @GetMapping("/students/{id}")
     public Student getStudent(@PathVariable int id){
         Student student  = repo.findById(id).get();
@@ -32,7 +31,19 @@ public class StudentControler {
     public void createsStudent(@RequestBody Student student) {
         repo.save(student);
     }
-
+    @PutMapping("/student/update/{id}")
+    public Student updatesStudents(@PathVariable int id) {
+        Student student = repo.findById(id).get();
+        student.setName("poonam");
+        student.setPercentage(92);
+        repo.save(student);
+        return student;
+    }
+    @DeleteMapping("/student/delete/{id}")
+    public void removeStudent(@PathVariable int id) {
+        Student student = repo.findById(id).get();
+        repo.delete(student);
+    }
 
 
 }
