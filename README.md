@@ -1,4 +1,4 @@
-SpringBoot REST API CRUD Operations using Spring Data JPA 
+<u><big>SpringBoot REST API CRUD Operations using Spring Data JPA</big></u>
 
 Prerequisites
 Java Development Kit (JDK) 8 or higher installed on your system.
